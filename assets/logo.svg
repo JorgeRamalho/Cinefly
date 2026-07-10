@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" fill="none" role="img" aria-label="Cinefly">
+  <defs>
+    <linearGradient id="cf-wing" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0C14B"/>
+      <stop offset="0.55" stop-color="#E8A838"/>
+      <stop offset="1" stop-color="#2DD4BF"/>
+    </linearGradient>
+    <linearGradient id="cf-reel" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F0E8"/>
+      <stop offset="1" stop-color="#C8B89A"/>
+    </linearGradient>
+  </defs>
+  <!-- Mark: film reel + flight arc -->
+  <g transform="translate(4,4)">
+    <circle cx="24" cy="24" r="20" stroke="url(#cf-wing)" stroke-width="2.5" fill="rgba(232,168,56,0.08)"/>
+    <circle cx="24" cy="24" r="7" fill="url(#cf-reel)"/>
+    <circle cx="24" cy="12" r="3.2" fill="#0B0F14" stroke="#E8A838" stroke-width="1.2"/>
+    <circle cx="24" cy="36" r="3.2" fill="#0B0F14" stroke="#E8A838" stroke-width="1.2"/>
+    <circle cx="12" cy="24" r="3.2" fill="#0B0F14" stroke="#2DD4BF" stroke-width="1.2"/>
+    <circle cx="36" cy="24" r="3.2" fill="#0B0F14" stroke="#2DD4BF" stroke-width="1.2"/>
+    <path d="M40 10 C48 16, 50 28, 44 38" stroke="url(#cf-wing)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    <path d="M42 8 L48 12 L42 14 Z" fill="#E8A838"/>
+  </g>
+  <!-- Wordmark -->
+  <text x="62" y="36" font-family="Syne, Arial Black, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.5" fill="#F5F0E8">Cine</text>
+  <text x="122" y="36" font-family="Syne, Arial Black, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.5" fill="#E8A838">fly</text>
+</svg>

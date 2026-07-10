@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu perfil — Cinefly</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="perfil">
+  <header class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.svg" alt="Cinefly" />
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="index.html#filmes">Filmes</a>
+        <a href="index.html#series">Séries</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="perfil.html" class="active">Perfil</a>
+      </nav>
+      <div class="nav-search">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="search-input" placeholder="Buscar…" autocomplete="off" aria-label="Buscar" />
+        <div class="search-dropdown" id="search-dropdown"></div>
+      </div>
+      <div class="nav-actions" id="nav-auth"></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <p class="eyebrow">Área do cliente</p>
+      <h1>Meu perfil</h1>
+      <p>Gerencie seus dados, senha e preferências da conta Cinefly.</p>
+    </div>
+  </div>
+
+  <div class="container profile-layout">
+    <aside class="profile-sidebar">
+      <div class="profile-avatar-lg" id="side-avatar">CF</div>
+      <h3 id="side-name">—</h3>
+      <p class="email" id="side-email">—</p>
+      <nav class="profile-nav">
+        <a href="#dados" class="active" data-panel="dados">👤 Dados pessoais</a>
+        <a href="#endereco" data-panel="endereco">📍 Endereço</a>
+        <a href="#senha" data-panel="senha">🔒 Senha</a>
+        <a href="#conta" data-panel="conta">⚙️ Conta</a>
+        <a href="favoritos.html">❤️ Favoritos</a>
+        <a href="index.html">🏠 Voltar ao início</a>
+      </nav>
+    </aside>
+
+    <div class="profile-main">
+      <div class="alert alert-success" id="alert-ok"></div>
+      <div class="alert alert-error" id="alert-err"></div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <strong id="stat-favs">0</strong>
+          <span>Favoritos</span>
+        </div>
+        <div class="stat-card">
+          <strong id="stat-member">—</strong>
+          <span>Membro desde</span>
+        </div>
+        <div class="stat-card">
+          <strong>✈️</strong>
+          <span>Conta ativa</span>
+        </div>
+      </div>
+
+      <!-- Dados pessoais -->
+      <section class="profile-panel active" id="panel-dados">
+        <h2>Dados pessoais</h2>
+        <p class="section-desc">Atualize nome, usuário, e-mail, telefone e bio.</p>
+
+        <div class="avatar-upload">
+          <div class="avatar-preview" id="avatar-preview">CF</div>
+          <div>
+            <p style="font-weight:600;margin-bottom:0.35rem">Foto de perfil</p>
+            <p class="muted" style="font-size:0.85rem;margin-bottom:0.65rem">Cole a URL de uma imagem ou remova a foto atual.</p>
+            <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+              <input type="url" id="avatar-url" placeholder="https://…" style="flex:1;min-width:180px;padding:0.55rem 0.85rem;background:var(--ink-soft);border:1px solid var(--border-strong);border-radius:var(--radius);outline:none" />
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-avatar-apply">Aplicar</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="btn-avatar-clear">Remover</button>
+            </div>
+          </div>
+        </div>
+
+        <form id="form-dados">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nome completo</label>
+              <input type="text" id="name" required />
+            </div>
+            <div class="form-group">
+              <label for="username">Usuário</label>
+              <input type="text" id="username" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="bio">Bio / sobre você</label>
+            <textarea id="bio" placeholder="O que você ama assistir?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar alterações</button>
+        </form>
+      </section>
+
+      <!-- Endereço -->
+      <section class="profile-panel" id="panel-endereco">
+        <h2>Endereço</h2>
+        <p class="section-desc">Mantenha seu endereço atualizado para comunicações e faturamento.</p>
+        <form id="form-endereco">
+          <div class="form-group">
+            <label for="address">Endereço</label>
+            <input type="text" id="address" placeholder="Rua, número, complemento" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">Cidade</label>
+              <input type="text" id="city" />
+            </div>
+            <div class="form-group">
+              <label for="state">Estado</label>
+              <select id="state">
+                <option value="">UF</option>
+                <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                <option>SP</option><option>SE</option><option>TO</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="zip">CEP</label>
+            <input type="text" id="zip" maxlength="9" placeholder="00000-000" />
+          </div>
+          <button type="submit" class="btn btn-primary">Salvar endereço</button>
+        </form>
+      </section>
+
+      <!-- Senha -->
+      <section class="profile-panel" id="panel-senha">
+        <h2>Alterar senha</h2>
+        <p class="section-desc">Use uma senha forte com pelo menos 6 caracteres.</p>
+        <form id="form-senha">
+          <div class="form-group">
+            <label for="currentPassword">Senha atual</label>
+            <input type="password" id="currentPassword" required autocomplete="current-password" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="newPassword">Nova senha</label>
+              <input type="password" id="newPassword" required autocomplete="new-password" />
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirmar nova senha</label>
+              <input type="password" id="confirmPassword" required autocomplete="new-password" />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Atualizar senha</button>
+        </form>
+      </section>
+
+      <!-- Conta -->
+      <section class="profile-panel" id="panel-conta">
+        <h2>Conta</h2>
+        <p class="section-desc">Sessão, exclusão e informações da conta.</p>
+        <div style="margin-bottom:1.5rem">
+          <p style="margin-bottom:0.75rem;color:var(--muted);font-size:0.9rem">Encerrar sessão neste dispositivo.</p>
+          <button type="button" class="btn btn-secondary" id="btn-logout-profile">🚪 Sair da conta</button>
+        </div>
+        <div style="padding-top:1.5rem;border-top:1px solid var(--border)">
+          <h3 style="font-size:1.1rem;margin-bottom:0.5rem;color:var(--danger)">Zona de perigo</h3>
+          <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem">Excluir permanentemente sua conta e favoritos. Esta ação não pode ser desfeita.</p>
+          <form id="form-delete">
+            <div class="form-group">
+              <label for="deletePassword">Confirme com sua senha</label>
+              <input type="password" id="deletePassword" required placeholder="Senha atual" />
+            </div>
+            <button type="submit" class="btn btn-danger">Excluir minha conta</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="footer-accent"></div>
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Cinefly</span>
+      <span>Decole no universo do cinema</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/perfil.js"></script>
+</body>
+</html>

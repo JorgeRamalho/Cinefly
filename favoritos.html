@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Favoritos — Cinefly</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="favoritos">
+  <header class="navbar scrolled" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-logo">
+        <img src="assets/logo.svg" alt="Cinefly" />
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="index.html#filmes">Filmes</a>
+        <a href="index.html#series">Séries</a>
+        <a href="favoritos.html" class="active">Favoritos</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+      <div class="nav-search">
+        <span class="search-icon">🔍</span>
+        <input type="search" id="search-input" placeholder="Buscar…" autocomplete="off" aria-label="Buscar" />
+        <div class="search-dropdown" id="search-dropdown"></div>
+      </div>
+      <div class="nav-actions" id="nav-auth"></div>
+      <button class="menu-toggle" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <p class="eyebrow">Minha lista</p>
+      <h1>❤️ Favoritos</h1>
+      <p>Títulos que você salvou para assistir depois.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="empty-state" id="favorites-empty" style="display:none">
+      <span class="emoji">🍿</span>
+      <h3>Sua lista está vazia</h3>
+      <p>Explore o catálogo e toque em ♡ para salvar filmes, séries e documentários.</p>
+      <a href="index.html" class="btn btn-primary" style="margin-top:1.25rem">Explorar catálogo</a>
+    </div>
+    <div class="grid-catalog" id="favorites-grid"></div>
+  </div>
+
+  <div class="footer-accent"></div>
+  <footer class="footer">
+    <div class="container footer-bottom" style="border:none;padding-top:0">
+      <span>© 2026 Cinefly</span>
+      <span>Decole no universo do cinema</span>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

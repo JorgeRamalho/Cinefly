@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar — Cinefly</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="login">
+  <div class="auth-page">
+    <aside class="auth-visual">
+      <div class="auth-visual-content">
+        <img class="logo-lg" src="assets/logo.svg" alt="Cinefly" />
+        <p class="eyebrow">Bem-vindo de volta</p>
+        <h1>Sua próxima história está a um play de distância.</h1>
+        <p>Acesse sua conta e continue decolando no universo do cinema.</p>
+      </div>
+    </aside>
+
+    <div class="auth-form-wrap">
+      <div class="auth-card">
+        <a href="index.html" style="display:inline-flex;margin-bottom:1.5rem">
+          <img src="assets/logo.svg" alt="Cinefly" height="32" />
+        </a>
+        <h2>Entrar</h2>
+        <p class="lead">Use seu usuário ou e-mail e senha.</p>
+
+        <div class="alert alert-error" id="alert"></div>
+
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="login">Usuário ou e-mail</label>
+            <input type="text" id="login" name="login" autocomplete="username" required placeholder="seu.usuario ou e-mail" />
+            <span class="form-error">Informe usuário ou e-mail.</span>
+          </div>
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required placeholder="••••••••" />
+            <span class="form-error">Informe sua senha.</span>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" id="remember" />
+            <label for="remember">Manter-me conectado neste dispositivo</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Entrar na Cinefly</button>
+        </form>
+
+        <div class="auth-footer">
+          Ainda não tem conta? <a href="cadastro.html">Cadastre-se</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

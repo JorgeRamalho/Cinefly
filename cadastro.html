@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro — Cinefly</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-page="cadastro">
+  <div class="auth-page">
+    <aside class="auth-visual">
+      <div class="auth-visual-content">
+        <img class="logo-lg" src="assets/logo.svg" alt="Cinefly" />
+        <p class="eyebrow">Crie sua conta</p>
+        <h1>Decole no universo do cinema.</h1>
+        <p>Cadastre-se pelo formulário ou escaneie o QR Code para começar em segundos.</p>
+      </div>
+    </aside>
+
+    <div class="auth-form-wrap">
+      <div class="auth-card">
+        <a href="index.html" style="display:inline-flex;margin-bottom:1.25rem">
+          <img src="assets/logo.svg" alt="Cinefly" height="32" />
+        </a>
+        <h2>Criar conta</h2>
+        <p class="lead">Escolha como deseja se cadastrar.</p>
+
+        <div class="auth-tabs" role="tablist">
+          <button type="button" class="auth-tab active" data-tab="form" role="tab">📝 Formulário</button>
+          <button type="button" class="auth-tab" data-tab="qr" role="tab">📱 QR Code</button>
+        </div>
+
+        <div class="alert alert-error" id="alert"></div>
+        <div class="alert alert-success" id="alert-ok"></div>
+
+        <!-- Formulário -->
+        <div class="form-panel active" id="panel-form">
+          <form id="register-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Nome completo</label>
+                <input type="text" id="name" name="name" required placeholder="Seu nome" autocomplete="name" />
+                <span class="form-error">Informe seu nome.</span>
+              </div>
+              <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required placeholder="cinefly_fan" autocomplete="username" />
+                <span class="form-error">Escolha um usuário.</span>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" required placeholder="voce@email.com" autocomplete="email" />
+                <span class="form-error">E-mail inválido.</span>
+              </div>
+              <div class="form-group">
+                <label for="phone">Telefone</label>
+                <input type="tel" id="phone" name="phone" required placeholder="(11) 99999-9999" autocomplete="tel" />
+                <span class="form-error">Telefone inválido.</span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address">Endereço</label>
+              <input type="text" id="address" name="address" placeholder="Rua, número, complemento" autocomplete="street-address" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">Cidade</label>
+                <input type="text" id="city" name="city" placeholder="Sua cidade" autocomplete="address-city" />
+              </div>
+              <div class="form-group">
+                <label for="state">Estado</label>
+                <select id="state" name="state">
+                  <option value="">UF</option>
+                  <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+                  <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+                  <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+                  <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+                  <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+                  <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+                  <option>SP</option><option>SE</option><option>TO</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="zip">CEP</label>
+              <input type="text" id="zip" name="zip" placeholder="00000-000" autocomplete="postal-code" maxlength="9" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required placeholder="Mín. 6 caracteres" autocomplete="new-password" />
+                <span class="form-error">Mínimo 6 caracteres.</span>
+              </div>
+              <div class="form-group">
+                <label for="confirmPassword">Confirmar senha</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Repita a senha" autocomplete="new-password" />
+                <span class="form-error">Confirme a senha.</span>
+              </div>
+            </div>
+
+            <div class="form-check">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">Li e aceito os termos de uso e a política de privacidade da Cinefly.</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Criar minha conta ✈️</button>
+          </form>
+        </div>
+
+        <!-- QR Code -->
+        <div class="qr-panel" id="panel-qr">
+          <p class="eyebrow">Cadastro rápido</p>
+          <h3 style="font-family:var(--font-display);margin:0.5rem 0">Escaneie com o celular</h3>
+          <div id="qrcode"></div>
+          <p>Abra a câmera do celular e aponte para o QR Code para abrir o formulário de cadastro neste dispositivo.</p>
+          <p class="form-hint" id="qr-url"></p>
+          <div class="divider">ou</div>
+          <button type="button" class="btn btn-secondary btn-block" id="btn-copy-link">📋 Copiar link de cadastro</button>
+        </div>
+
+        <div class="auth-footer">
+          Já tem conta? <a href="login.html">Entrar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/cadastro.js"></script>
+</body>
+</html>
