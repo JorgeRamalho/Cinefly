@@ -25,7 +25,7 @@ const CINEFLY_CATALOG = [
     genres: ['drama', 'sci-fi'],
     synopsis: 'Cientistas de uma estação orbital enfrentam um fenômeno que reescreve a realidade a cada amanhecer.',
     poster: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&h=600&fit=crop',
-    backdrop: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1400&q=80',
+    backdrop: 'https://images.unsplash.com/photo-1538115081112-32c7d8401807?w=1400&q=80',
     featured: true,
     trending: true,
     rank: 2
@@ -68,7 +68,7 @@ const CINEFLY_CATALOG = [
     genres: ['suspense', 'crime'],
     synopsis: 'Uma detetive rural investiga desaparecimentos ligados a lendas locais e segredos de família.',
     poster: 'https://images.unsplash.com/photo-1594909122845-11baa439b7bf?w=400&h=600&fit=crop',
-    backdrop: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=1400&q=80',
+    backdrop: 'https://images.unsplash.com/photo-1755386228574-d431a8699f91?w=1400&q=80',
     trending: true,
     rank: 5
   },
@@ -82,7 +82,7 @@ const CINEFLY_CATALOG = [
     genres: ['ação', 'aventura'],
     synopsis: 'Quando o tempo congela em uma metrópole, um mensageiro precisa atravessar a cidade em 60 minutos reais.',
     poster: 'https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=400&h=600&fit=crop',
-    backdrop: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&q=80',
+    backdrop: 'https://images.unsplash.com/photo-1771383437526-202908ad2639?w=1400&q=80',
     trending: true,
     rank: 6
   },

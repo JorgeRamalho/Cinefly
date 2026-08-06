@@ -102,6 +102,36 @@ const CineflyUI = (() => {
     });
   }
 
+  function initRailSlider(root) {
+    if (!root) return;
+    const track = root.querySelector('.rail');
+    const prev = root.querySelector('.rail-prev');
+    const next = root.querySelector('.rail-next');
+    if (!track || !prev || !next) return;
+
+    function step() {
+      const card = track.querySelector('.poster');
+      const gap = parseFloat(getComputedStyle(track).gap) || 14;
+      return card ? card.offsetWidth + gap : Math.max(track.clientWidth * 0.8, 240);
+    }
+
+    function updateNav() {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+    }
+
+    prev.addEventListener('click', () => {
+      track.scrollBy({ left: -step(), behavior: 'smooth' });
+    });
+    next.addEventListener('click', () => {
+      track.scrollBy({ left: step(), behavior: 'smooth' });
+    });
+    track.addEventListener('scroll', updateNav, { passive: true });
+    window.addEventListener('resize', updateNav);
+    requestAnimationFrame(updateNav);
+  }
+
   function openModal(item) {
     let backdrop = document.getElementById('content-modal');
     if (!backdrop) {
@@ -179,7 +209,11 @@ const CineflyUI = (() => {
     const toggle = document.querySelector('.menu-toggle');
     const links = document.querySelector('.nav-links');
     if (toggle && links) {
-      toggle.addEventListener('click', () => links.classList.toggle('mobile-open'));
+      toggle.addEventListener('click', () => {
+        const open = links.classList.toggle('mobile-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+      });
     }
 
     const user = CineflyAuth.getCurrentUser();
@@ -318,7 +352,7 @@ const CineflyUI = (() => {
               <span class="pill">★ Destaque</span>
               <span>${typeLabel(item.type)}</span>
             </div>
-            <h2>${item.title}</h2>
+            <p class="spotlight-title">${item.title}</p>
             <p class="legend">${item.synopsis}</p>
             <div class="spotlight-meta">
               <span class="rating">★ ${item.rating}</span>
@@ -482,46 +516,12 @@ const CineflyUI = (() => {
   function initHome() {
     initSpotlightCarousel();
 
-    const hero = getFeatured()[0] || CINEFLY_CATALOG[0];
-    if (hero) {
-      const bg = document.getElementById('hero-bg-img');
-      const title = document.getElementById('hero-title');
-      const syn = document.getElementById('hero-synopsis');
-      const meta = document.getElementById('hero-meta');
-      if (bg) {
-        bg.src = hero.backdrop;
-        bindImageFallback(bg, FALLBACK_BACKDROP);
-      }
-      if (title) title.textContent = hero.title;
-      if (syn) syn.textContent = hero.synopsis;
-      if (meta) {
-        meta.innerHTML = `
-          <span class="badge">★ ${hero.rating}</span>
-          <span class="dot">${hero.year}</span>
-          <span class="dot">${hero.duration}</span>
-          <span class="dot">${typeLabel(hero.type)}</span>
-        `;
-      }
-      const playBtn = document.getElementById('hero-play');
-      const favBtn = document.getElementById('hero-fav');
-      if (playBtn) playBtn.addEventListener('click', () => openModal(hero));
-      if (favBtn) {
-        if (CineflyAuth.isFavorite(hero.id)) {
-          favBtn.textContent = '♥ Nos favoritos';
-          favBtn.classList.add('active');
-        }
-        favBtn.addEventListener('click', () => {
-          handleFavorite(hero.id, favBtn);
-          favBtn.textContent = CineflyAuth.isFavorite(hero.id) ? '♥ Nos favoritos' : '♡ Minha lista';
-        });
-      }
-    }
-
     renderRail(document.getElementById('rail-trending'), getTrending(), { ranked: true });
     renderRail(document.getElementById('rail-filmes'), getByType('filme'));
     renderRail(document.getElementById('rail-series'), getByType('série'));
     renderRail(document.getElementById('rail-docs'), getByType('documentário'));
     renderRail(document.getElementById('rail-continue'), CINEFLY_CATALOG.slice(3, 9), { wide: true });
+    initRailSlider(document.querySelector('#continuar [data-rail-slider]'));
 
     const chips = document.getElementById('category-chips');
     if (chips) {

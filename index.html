@@ -3,65 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cinefly — Decole no universo do cinema. Filmes, séries e documentários online." />
+  <meta name="description" content="Cinefly — Decole no universo do cinema. Assista filmes, séries e documentários online em um catálogo feito para quem ama a sétima arte." />
+  <meta name="robots" content="index, follow" />
   <title>Cinefly — Decole no universo do cinema</title>
+  <link rel="canonical" href="https://cinefly.app/" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Cinefly" />
+  <meta property="og:url" content="https://cinefly.app/" />
+  <meta property="og:title" content="Cinefly — Decole no universo do cinema" />
+  <meta property="og:description" content="Assista filmes, séries e documentários online. Decole no universo do cinema com o Cinefly." />
+  <meta property="og:image" content="https://cinefly.app/assets/images/banner-brand.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cinefly — Decole no universo do cinema" />
+  <meta name="twitter:description" content="Assista filmes, séries e documentários online. Decole no universo do cinema com o Cinefly." />
+  <meta name="twitter:image" content="https://cinefly.app/assets/images/banner-brand.svg" />
+
   <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cinefly.app/#organization",
+        "name": "Cinefly",
+        "url": "https://cinefly.app/",
+        "logo": "https://cinefly.app/assets/logo.svg",
+        "slogan": "Decole no universo do cinema"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cinefly.app/#website",
+        "url": "https://cinefly.app/",
+        "name": "Cinefly",
+        "description": "Filmes, séries e documentários online.",
+        "publisher": { "@id": "https://cinefly.app/#organization" },
+        "inLanguage": "pt-BR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://cinefly.app/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body data-page="home">
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
   <header class="navbar" id="navbar">
     <div class="container">
       <a href="index.html" class="nav-logo" aria-label="Cinefly início">
         <img src="assets/logo.svg" alt="Cinefly" />
       </a>
-      <nav class="nav-links" aria-label="Principal">
+      <nav class="nav-links" id="nav-links" aria-label="Principal">
         <a href="index.html" class="active">Início</a>
         <a href="#filmes">Filmes</a>
         <a href="#series">Séries</a>
         <a href="#docs">Docs</a>
         <a href="favoritos.html">Favoritos</a>
       </nav>
-      <div class="nav-search">
+      <div class="nav-search" role="search">
         <span class="search-icon" aria-hidden="true">🔍</span>
         <input type="search" id="search-input" placeholder="Buscar filmes, séries, docs…" autocomplete="off" aria-label="Buscar" />
         <div class="search-dropdown" id="search-dropdown" role="listbox"></div>
       </div>
       <div class="nav-actions" id="nav-auth"></div>
-      <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="nav-links" aria-expanded="false">☰</button>
     </div>
   </header>
 
-  <!-- Carrossel de destaques -->
+  <!-- Hero unificado: marca + carrossel de destaques -->
   <section class="spotlight" id="spotlight" aria-label="Destaques Cinefly" aria-roledescription="carrossel">
     <div class="spotlight-track" id="spotlight-track"></div>
-    <button class="spotlight-nav spotlight-prev" id="spotlight-prev" aria-label="Anterior">‹</button>
-    <button class="spotlight-nav spotlight-next" id="spotlight-next" aria-label="Próximo">›</button>
+    <div class="spotlight-brand-layer" aria-hidden="false">
+      <div class="container">
+        <h1 class="spotlight-brand">Cine<span>fly</span></h1>
+        <p class="spotlight-tagline">Decole no universo do cinema</p>
+      </div>
+    </div>
+    <button class="spotlight-nav spotlight-prev" id="spotlight-prev" type="button" aria-label="Anterior">‹</button>
+    <button class="spotlight-nav spotlight-next" id="spotlight-next" type="button" aria-label="Próximo">›</button>
     <div class="spotlight-dots" id="spotlight-dots" role="tablist" aria-label="Slides"></div>
     <div class="spotlight-progress"><span id="spotlight-progress-bar"></span></div>
   </section>
 
-  <section class="hero">
-    <div class="hero-bg">
-      <img id="hero-bg-img" src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600&q=80" alt="" />
-    </div>
-    <div class="container hero-content">
-      <p class="hero-brand">Cine<span>fly</span></p>
-      <p class="eyebrow">Em destaque · Estreia</p>
-      <h1 id="hero-title">Horizonte Noturno</h1>
-      <div class="hero-meta" id="hero-meta"></div>
-      <p id="hero-synopsis">Um piloto de drones descobre uma conspiração global enquanto rastreia sinais misteriosos no céu noturno.</p>
-      <div class="hero-actions">
-        <button class="btn btn-primary" id="hero-play">▶ Assistir</button>
-        <button class="btn btn-secondary" id="hero-fav">♡ Minha lista</button>
-      </div>
-    </div>
-  </section>
-
-  <main>
+  <main id="conteudo">
     <section class="section">
       <div class="container">
         <div class="section-header">
-          <h2>🔥 Em alta agora</h2>
+          <h2>Em alta agora</h2>
         </div>
         <div class="rail" id="rail-trending"></div>
       </div>
@@ -70,16 +111,20 @@
     <section class="section" id="continuar">
       <div class="container">
         <div class="section-header">
-          <h2>🍿 Continuar assistindo</h2>
+          <h2>Continuar assistindo</h2>
         </div>
-        <div class="rail" id="rail-continue"></div>
+        <div class="rail-slider" data-rail-slider>
+          <button class="rail-nav rail-prev" type="button" aria-label="Anterior">‹</button>
+          <div class="rail rail-arrows" id="rail-continue"></div>
+          <button class="rail-nav rail-next" type="button" aria-label="Próximo">›</button>
+        </div>
       </div>
     </section>
 
     <section class="section" id="filmes">
       <div class="container">
         <div class="section-header">
-          <h2>🎬 Filmes</h2>
+          <h2>Filmes</h2>
           <a href="#catalogo">Ver todos</a>
         </div>
         <div class="rail" id="rail-filmes"></div>
@@ -89,7 +134,7 @@
     <section class="section" id="series">
       <div class="container">
         <div class="section-header">
-          <h2>📺 Séries</h2>
+          <h2>Séries</h2>
           <a href="#catalogo">Ver todas</a>
         </div>
         <div class="rail" id="rail-series"></div>
@@ -99,7 +144,7 @@
     <section class="section" id="docs">
       <div class="container">
         <div class="section-header">
-          <h2>🎞️ Documentários</h2>
+          <h2>Documentários</h2>
           <a href="#catalogo">Ver todos</a>
         </div>
         <div class="rail" id="rail-docs"></div>
@@ -109,7 +154,7 @@
     <section class="section" id="catalogo">
       <div class="container">
         <div class="section-header">
-          <h2>✨ Explorar por categoria</h2>
+          <h2>Explorar por categoria</h2>
         </div>
         <div class="categories" id="category-chips"></div>
         <div class="grid-catalog" id="catalog-grid"></div>
